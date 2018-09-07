@@ -9,3 +9,13 @@
 #### 2.学习swnb的github上面相关的canvas动画写法，并将相关的项目添加到了canvas-learning的文档中，发现其多采用面向对象编程的写法来写整个组件。需要好好学习关于js面向对象编程，看书看到相关的章节，开始慢慢理解构造函数，原型等，还需要加强练习来帮助巩固。
 #### 3.接触到一个常见的dom方法queryselecter，于是查阅相关资料对常见的HTML DOM元素以及对应的属性和方法过了一遍，包括一些见过但没用过的，比如：addEventListener，removeEventListener，innerHTML等等，详见活页笔记本。
 #### 4.了解javascript 中的 cookie ，其主要用于存储web页面中的用户信息，主要作用就是记录客户端的用户信息。
+
+## 2018.09.07
+#### 1.canvas虚线画法，设置虚线的实线长度和空白长度，以及最开始偏移长度。之后画出来的就是虚线。
+
+```shell
+ctx.setLineDash([20, 20]);  // [实线长度, 间隙长度]
+ctx.lineDashOffset = -0;
+```
+
+#### 2.创建了translate.vue和crossroad.vue组件，均是采用简单的requestAnimationFrame动画请求来画的。之后要尝试接触一些复杂一点的动画，并加以练习。
