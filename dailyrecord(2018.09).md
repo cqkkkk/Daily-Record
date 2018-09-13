@@ -41,8 +41,8 @@ ctx.lineDashOffset = -0;
 
 ```shell
 <div>
-			<img v-for="(src,index) in srcList('base')"
-				@click="choosePage(src)" :src="imgSrc(src)" :key="index"/>
+	<img v-for="(src,index) in srcList('base')"
+	     @click="choosePage(src)" :src="imgSrc(src)" :key="index"/>
 </div>
 ```
 #### 6.computed是vue中的计算属性，只用在调用相关数据时，才会运行相关的代码。而生命周期函数created则不一样，created是在页面加载之前就会执行相对应的代码。要区分两者，合理运用。
