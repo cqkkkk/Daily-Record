@@ -94,12 +94,12 @@ ctx.lineDashOffset = -0;
 		animation: name duration timing-function delay iteration-count direction fill-mode;
 	}
 ```
-#### name:keyframe的名称，也就是定义了关键帧的动画的名称,这个名称用来区别不同的动画。
-#### duration:完成动画所需要的时间（2s 或者 2000ms）
-#### timing-function:完成动画的速度曲线 linear:匀速 ease:从慢到快再到慢 ease-in：慢慢加快 ease-out：慢慢变慢 ease-in-out：先变快再变慢
-#### delay：动画开始之前的延迟
-#### iteration-count：动画播放次数
-#### direction：是否轮流反向播放动画（normal:正常顺序播放，alternate下一次反向播放）如果把动画设置为只播放一次，则该属性没有效果。
+##### name:keyframe的名称，也就是定义了关键帧的动画的名称,这个名称用来区别不同的动画。
+##### duration:完成动画所需要的时间（2s 或者 2000ms）
+##### timing-function:完成动画的速度曲线 linear:匀速 ease:从慢到快再到慢 ease-in：慢慢加快 ease-out：慢慢变慢 ease-in-out：先变快再变慢
+##### delay：动画开始之前的延迟
+##### iteration-count：动画播放次数
+##### direction：是否轮流反向播放动画（normal:正常顺序播放，alternate下一次反向播放）如果把动画设置为只播放一次，则该属性没有效果。
 #### 上面这些参数并不是在每次使用动画时都要全部写上，可以写上部分需要的参数即可。例如接下来的demo：
 ```shell
 	//javascript
@@ -118,6 +118,28 @@ ctx.lineDashOffset = -0;
 	    	70% {left:500px;}
 	    	100%{left:810px;}
 	}
+```
+#### 4.entries ES6中同时为数组和对象object提供了entries（）方法，二者虽然同名，但是应用于不同的地方，其达到的效果是不一样的，内部逻辑是不一样的。要注意区分！！！！！
+##### 数组中使用
+```shell
+	for (let [index, elem] of ['a', 'b'].entries()) {
+	  console.log(index, elem);
+	}
+	// 0 "a"
+	// 1 "b"
+	
+	//如果不使用for...of循环，可以手动调用遍历器对象的next方法，进行遍历。
+	let letter = ['a', 'b', 'c'];
+	let entries = letter.entries();
+	console.log(entries.next().value); // [0, 'a']
+	console.log(entries.next().value); // [1, 'b']
+	console.log(entries.next().value); // [2, 'c']
+```
+##### 对象中的使用（Object.entries方法返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键值对数组。）
+```shell
+	const obj = { foo: 'bar', baz: 42 };
+	Object.entries(obj)
+	// [ ["foo", "bar"], ["baz", 42] ]
 ```
 
 
