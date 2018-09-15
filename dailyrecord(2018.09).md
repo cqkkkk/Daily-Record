@@ -48,6 +48,80 @@ ctx.lineDashOffset = -0;
 #### 6.computed是vue中的计算属性，只用在调用相关数据时，才会运行相关的代码。而生命周期函数created则不一样，created是在页面加载之前就会执行相对应的代码。要区分两者，合理运用。
 #### 7.学习使用vue-router，vue.js官方的路由管理器，它和 Vue.js 的核心深度集成，让构建单页面应用变得易如反掌。这里不做详细介绍，待之后有时间将这个路由管理器运用到[vue-learning](https://github.com/cqkkkk/Vue-learning)项目中去。(待更新)
 
+## 2018.09.15(山竹即将登陆广东)
+#### 1.状态管理，如果需要做一个组件或者是一个网页会按照一定的步骤进行操作的话，做法可以参考以下demo：
+```shell
+	 // html部分
+	 <header>
+            <p>{{state.title}}</p>
+         </header>
+	 
+	 // JavaScript部分
+	 // 创建一个stateList数组，数组中每个元素是一个对象，保存着每一个步骤
+	 const stateList = [
+	    {
+		title: '打开冰箱'
+	    },
+	    {
+		title: '把大象塞进冰箱'
+	    },
+	    {
+		title: '关上冰箱'
+	    }   
+	];
+	
+	let stateCount = 0; //索引
+	let state = stateList[stateCount], //当前步骤
+	
+	// 每当完成一个步骤时要调用nextstate函数，转换为下一个状态
+	function nextstate(){
+		state = stateList[++stateCount];
+	}
+```
+#### 2.ref属性 ref是用来给元素和子组件注册引用信息。引用信息将注册在父组件的$refs对象上。如果在普通的DOM元素上使用，引用指向的就是DOM元素。举例：
+```shell
+	<input type="text" ref="input1"/>
+    	<button @click="add">添加</button>
+	
+	add:function(){
+        	this.$refs.input1.value ="22"; //this.$refs.input1  减少获取dom节点的消耗
+        }
+```
+#### 当 ref 和 v-for 一起使用的时候，你得到的引用将会是一个包含了对应数据源的这些子组件的数组。
+#### 3.之前尝试实现的动画都是但步骤的，也就是一直沿着一个方向前进，或沿着一个方向平移等等。那么，当我们需要实现较复杂的动画时，例如在一个步骤中，一个物体先右移，下移，再左移，上移回到原点这样来画一个矩形的形态。如果仍然采用之前的requestAnimationFrame动画请求来做的话，会相当的复杂。查阅资料之后发现另一个有趣的实现方法，即采用css3中的animation来做。使用animation属性制作动画可以更加灵活的设置动画帧，keyframe中的百分数是动画完成总时间的比例。
+```shell
+	.tset{
+		animation: name duration timing-function delay iteration-count direction fill-mode;
+	}
+```
+#### name:keyframe的名称，也就是定义了关键帧的动画的名称,这个名称用来区别不同的动画。
+#### duration:完成动画所需要的时间（2s 或者 2000ms）
+#### timing-function:完成动画的速度曲线 linear:匀速 ease:从慢到快再到慢 ease-in：慢慢加快 ease-out：慢慢变慢 ease-in-out：先变快再变慢
+#### delay：动画开始之前的延迟
+#### iteration-count：动画播放次数
+#### direction：是否轮流反向播放动画（normal:正常顺序播放，alternate下一次反向播放）如果把动画设置为只播放一次，则该属性没有效果。
+#### 上面这些参数并不是在每次使用动画时都要全部写上，可以写上部分需要的参数即可。例如接下来的demo：
+```shell
+	//javascript
+	//在需要动画实现的时候才将这个css样式加到指定的dom元素上
+	document.queryselector('div').classList.add('clean');
+	
+	// css
+	.clean{
+		animation: clean_coverslip 2s linear;
+	}
+	@keyframes clean_coverslip
+	{
+	    	1% {left:810px;}
+	    	30% {left:500px;}
+	    	50% {left:600px;}
+	    	70% {left:500px;}
+	    	100%{left:810px;}
+	}
+```
+
+
+
 
 
 
