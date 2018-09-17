@@ -142,7 +142,24 @@ ctx.lineDashOffset = -0;
 	// [ ["foo", "bar"], ["baz", 42] ]
 ```
 
-
+## 2018.09.17（山竹已溜）
+#### 1.在项目中完成一个效果就是要先改变一张图片的背景，然后隔一个时间段之后再变回来。很自然就想到使用setTimeOut这个函数，在过去一定的时间段之后执行相应的函数，但是如果直接按照正常的函数书写格式来写一个函数，那么会拿不到vue模板中的data值，而将正常函数书写形式改为箭头函数就可以解决这个问题。
+```shell
+	setTimeout(function(){
+		var test = this.value; //拿不到数据 
+	},1000)
+	
+	function test(){
+		var test = this.value;
+	}
+	setTimeout(test,1000); //还是拿不到相应数据
+	
+	setTimeout(() => {
+		var test = this.value; //可以拿到数据
+	})
+```
+#### 2.箭头函数与普通函数之间的区别（待进一步学习）
+#### 3.linkTimeout  当有多个步骤的情况之下，可以采用多个setTimeout来写，也可以写一个类linkTimeout将这些全部步骤串联起来。（详见onion中的用法以及utils文件夹下的定义类文件）
 
 
 
