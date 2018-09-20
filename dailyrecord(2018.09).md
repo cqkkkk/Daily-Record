@@ -161,6 +161,49 @@ ctx.lineDashOffset = -0;
 #### 2.箭头函数与普通函数之间的区别（待进一步学习）
 #### 3.linkTimeout  当有多个步骤的情况之下，可以采用多个setTimeout来写，也可以写一个类linkTimeout将这些全部步骤串联起来。（详见onion中的用法以及utils文件夹下的定义类文件）
 
+## 2018.09.20
+#### 1.使用vue模板来开发前端项目的一个好处就是它是组件化开发，这点跟react框架是一样的。你可以随时将你写好的组件export，然后在另一个组件中进行import并应用，开发起来相当方便。举例如下：
+```shell
+	//开发了一个名为onion的组件，同时还开发了另一个afteronion组件，想要将这两个组件给整合到一个组件中，二者是先后顺序
+	//给onion组件命名并且将其export
+	export default {
+		name: 'onion',
+		data(){
+			...
+		}
+	}
+	
+	//创建一个整合的组件假设名字为test,使用v-if来控制两个组件哪个组件显示
+	<template>
+		<onion v-if="stage === 0" @jump="onJump"></onion>
+		<afteronion v-else></afteronion>
+	</template>
+	
+	<script>
+		import onion from '...';
+		import afteronion from '...';
 
+		export default {
+			data() {},
+			components: {
+				onion,
+				afteronion
+			},
+			methods: {
+				onJump() {
+					   this.stage = 1;
+				}
+			}
+		}
+	</script>
+	
+	//同时在onion组件中还有一个button用来监听一个点击事件，并且执行相应的函数
+	<button v-on:click = "jump"></button>
+	jump() {
+		this.$emit('jump');
+	}
+
+```
+#### 2.父组件可以使用 props 把数据传给子组件。子组件可以使用 $emit 触发父组件的自定义事件。关于这两个的用法可以参考[这里](https://blog.csdn.net/sllailcp/article/details/78595077)
 
 
