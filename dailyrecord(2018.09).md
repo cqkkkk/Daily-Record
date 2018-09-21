@@ -46,7 +46,7 @@ ctx.lineDashOffset = -0;
 </div>
 ```
 #### 6.computed是vue中的计算属性，只用在调用相关数据时，才会运行相关的代码。而生命周期函数created则不一样，created是在页面加载之前就会执行相对应的代码。要区分两者，合理运用。
-#### 7.学习使用vue-router，vue.js官方的路由管理器，它和 Vue.js 的核心深度集成，让构建单页面应用变得易如反掌。这里不做详细介绍，待之后有时间将这个路由管理器运用到[vue-learning](https://github.com/cqkkkk/Vue-learning)项目中去。(待更新)
+#### 7.学习使用vue-router，vue.js官方的路由管理器，它和 Vue.js 的核心深度集成，让构建单页面应用变得易如反掌。这里不做详细介绍，待之后有时间将这个路由管理器运用到[vue-learning](https://github.com/cqkkkk/Vue-learning)项目中去。(已更新)
 
 ## 2018.09.15(山竹即将登陆广东)
 #### 1.状态管理，如果需要做一个组件或者是一个网页会按照一定的步骤进行操作的话，做法可以参考以下demo：
