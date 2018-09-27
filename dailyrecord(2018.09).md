@@ -206,4 +206,36 @@ ctx.lineDashOffset = -0;
 ```
 #### 2.父组件可以使用 props 把数据传给子组件。子组件可以使用 $emit 触发父组件的自定义事件。关于这两个的用法可以参考[这里](https://blog.csdn.net/sllailcp/article/details/78595077)
 
+## 2018.09.27
+#### 1.vue组件复用时传递props属性实例，
+```
+	<template>
+		<div>{{testvalue}}</div>
+	</template>
+	
+	export default{
+		name:'test',
+		props:[
+			'testvalue'
+		],
+	}
+	
+	//使用时就可以传递相对应的参数
+	<test value="传递参数值"></test>
+```
+#### 2.css模块设置，前面设置应该是指使用scss预编译器，所以可以在样式中加入一些scss支持的逻辑语言等，后面的scoped指的是该组件中的样式仅对组件内部起作用，不会影响到外面的全局样式。（在一些大项目中加上很重要！！！）
+```
+	<style lang="scss" scoped>
+```
+#### 3.今天在使用一个旋转样式时，需要旋转不是围绕中心，而是围绕其他点，之前虽然也用过，但是印象不够深刻，下面稍微总结一下：
+```
+	//围绕中心点
+	transform-origin: center;
+	//围绕四个顶角或者一些有规律的点
+	transform-origin: top(bottom) left(right/center);
+	//围绕某一个点，使用像素指定位置，第一个值是横坐标，第二个值指的是纵坐标
+	transform-origin: 100px 50px;
+```
+
+
 
